@@ -1,0 +1,25 @@
+-- Top 5 Customers from Top 10 Cities
+
+WITH top_5_customers_cte AS (
+    SELECT
+        B.customer_id AS Customer_id,
+        B.first_name AS Customer_first_Name,
+        B.last_name AS Customer_Last_Name,
+        E.country AS Country,
+        D.city AS City,
+        SUM(A.amount) AS Total_Amount_paid
+    FROM payment A
+        INNER JOIN customer B ON A.customer_id = B.customer_id
+        INNER JOIN address C ON B.address_id = C.address_id
+        INNER JOIN city D ON C.city_id = D.city_id
+        INNER JOIN country E ON D.country_id = E.country_id
+    WHERE city IN ('Aurora', 'Acua', 'Citrus Heights', 'Iwaki', 'Ambattur', 'Shanwei',
+				   'So Leopoldo', 'Teboksary', 'Tianjin', 'Cianjur')
+    GROUP BY B.customer_id, B.first_name, B.last_name, E.country, D.city
+    ORDER BY Total_Amount_Paid DESC
+    LIMIT 5
+)
+
+-- Main Query using the CTE
+SELECT *
+FROM top_5_customers_cte;
