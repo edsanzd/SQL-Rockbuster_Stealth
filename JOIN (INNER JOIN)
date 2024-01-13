@@ -1,0 +1,13 @@
+-- Top5 Revenue film 
+SELECT
+      D.film_id,
+	  D.title 
+	 AS film_title,
+ SUM (A.amount)AS total_revenue
+FROM payment A
+INNER JOIN rental B ON A.rental_id = B.rental_id
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id
+INNER JOIN film D ON C.film_id = D.film_id
+GROUP BY D.film_id
+ORDER BY total_revenue DESC
+LIMIT 5;
