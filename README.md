@@ -32,4 +32,5 @@ project, provided by Career Foundry Institute.
 ## Visualizations
 
 The visualizations for the project were created in Tableau Public.
-https://public.tableau.com/shared/PB5Z5269M?:display_count=n&:origin=viz_share_link
+https://public.tableau.com/app/profile/eduardo.sanchez.duran/viz/Rockbuster_campaigne2020_3_10/countgeographical
+
